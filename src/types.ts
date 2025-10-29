@@ -1,4 +1,4 @@
-// Interface für Verlagsinformationen (v2.0.0 - nicht mehr in v3.2.0 verwendet)
+// Interface für Verlagsinformationen
 // Definiert die Struktur eines Verlags mit Name und URL
 export interface Publisher {
   name: string; // Name des Verlags
@@ -7,17 +7,16 @@ export interface Publisher {
 
 // Interface für Buchinformationen
 // Definiert die vollständige Struktur eines Buches mit allen relevanten Eigenschaften
-// Aktualisiert für BookMonkey API v3.2.0
 export interface Book {
-  id: string; // Eindeutige ID des Buches (neu in v3.2.0)
+  id: string; // Eindeutige ID des Buches
   isbn: string; // ISBN-Nummer als eindeutiger Identifikator
   title: string; // Buchtitel
   subtitle?: string; // Optionaler Untertitel (? bedeutet optional)
   author: string; // Autor des Buches
-  publisher: string; // Verlagsname als einfacher String (geändert in v3.2.0)
+  publisher: string; // Verlagsname als einfacher String
   abstract?: string; // Optionale Buchbeschreibung/Zusammenfassung
   numPages?: number; // Optionale Seitenanzahl
   price?: string; // Optionaler Preis als String
-  cover?: string; // URL zum Buchcover-Bild (neu in v3.2.0)
-  userId?: number; // Benutzer-ID (neu in v3.2.0)
+  cover?: string; // URL zum Buchcover-Bild
+  userId?: number; // Benutzer-ID
 }
