@@ -114,7 +114,7 @@ function renderBooks(): void {
       <td>${book.title}</td>
       <td>${book.isbn}</td>
       <td>${book.author}</td>
-      <td>${book.publisher.name}</td>
+      <td>${book.publisher}</td>
       <td>
         <button class="button" onclick="location.href='detail.html?isbn=${
           book.isbn
@@ -171,8 +171,7 @@ function filterBooks(): void {
     // Prüfe ob der Buchtitel den Suchbegriff enthält (case-insensitive)
     const matchesSearch = book.title.toLowerCase().includes(searchTerm);
     // Prüfe ob der Verlag übereinstimmt (oder "-" für alle Verlage gewählt ist)
-    const matchesPublisher =
-      publisher === "-" || book.publisher.name === publisher;
+    const matchesPublisher = publisher === "-" || book.publisher === publisher;
     // Nur Bücher zurückgeben, die beide Kriterien erfüllen (UND-Verknüpfung)
     return matchesSearch && matchesPublisher;
   });
@@ -202,7 +201,7 @@ async function fetchBooks(): Promise<void> {
     // new Set() entfernt Duplikate
     // Array.from() konvertiert das Set zurück zu einem Array
     const publishers = Array.from(
-      new Set(allBooks.map((book) => book.publisher.name))
+      new Set(allBooks.map((book) => book.publisher))
     );
     const publisherSelect = document.getElementById(
       "by-publisher"

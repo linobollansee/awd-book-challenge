@@ -15,6 +15,6 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "bookmonkey-api": "^2.0.0"
+    "bookmonkey-api": "^3.2.0"
   }
 }

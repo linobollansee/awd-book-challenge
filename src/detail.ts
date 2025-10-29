@@ -70,7 +70,7 @@ async function loadBookDetails(): Promise<void> {
       // || "N/A" zeigt "N/A" an, falls numPages undefined ist
       detailsList.innerHTML = `
         <li><strong>Author:</strong> ${book.author}</li>
-        <li><strong>Publisher:</strong> ${book.publisher.name}</li>
+        <li><strong>Publisher:</strong> ${book.publisher}</li>
         <li><strong>Pages:</strong> ${book.numPages || "N/A"}</li>
       `;
     }

@@ -58,6 +58,12 @@ function renderBooks(): void {
   // Lösche den aktuellen Tabelleninhalt
   tbody.innerHTML = "";
 
+  // Aktualisiere die Anzeige der Anzahl der Favoriten (muss immer passieren)
+  const countElement = document.querySelector("main h2");
+  if (countElement) {
+    countElement.textContent = `${filteredBooks.length} Favorites on your list`;
+  }
+
   // Wenn keine Favoriten vorhanden sind, zeige entsprechende Meldung
   if (filteredBooks.length === 0) {
     tbody.innerHTML = '<tr><td colspan="6">No favorite books found.</td></tr>';
@@ -90,7 +96,7 @@ function renderBooks(): void {
       <td>${book.title}</td>
       <td>${book.isbn}</td>
       <td>${book.author}</td>
-      <td>${book.publisher.name}</td>
+      <td>${book.publisher}</td>
       <td>
         <button class="button" onclick="location.href='detail.html?isbn=${book.isbn}'">
           Detail
@@ -113,12 +119,6 @@ function renderBooks(): void {
       }
     });
   });
-
-  // Aktualisiere die Anzeige der Anzahl der Favoriten
-  const countElement = document.querySelector("main h2");
-  if (countElement) {
-    countElement.textContent = `${filteredBooks.length} Favorites on your list`;
-  }
 }
 
 // Funktion zum Filtern der Favoriten-Bücher nach Suchbegriff und Verlag
@@ -134,8 +134,7 @@ function filterBooks(): void {
   // Filtere die Favoriten-Bücher basierend auf den Kriterien
   filteredBooks = allBooks.filter((book) => {
     const matchesSearch = book.title.toLowerCase().includes(searchTerm);
-    const matchesPublisher =
-      publisher === "-" || book.publisher.name === publisher;
+    const matchesPublisher = publisher === "-" || book.publisher === publisher;
     return matchesSearch && matchesPublisher;
   });
 
@@ -151,6 +150,15 @@ async function loadFavorites(): Promise<void> {
   if (favorites.length === 0) {
     allBooks = [];
     filteredBooks = [];
+
+    // Leere auch das Verlags-Dropdown, da keine Favoriten-Bücher existieren
+    const publisherSelect = document.getElementById(
+      "by-publisher"
+    ) as HTMLSelectElement;
+    if (publisherSelect) {
+      publisherSelect.innerHTML = '<option value="-">-</option>';
+    }
+
     renderBooks();
     return;
   }
@@ -171,7 +179,7 @@ async function loadFavorites(): Promise<void> {
 
     // Befülle das Verlags-Dropdown mit den Verlagen der Favoriten-Bücher
     const publishers = Array.from(
-      new Set(allBooks.map((book) => book.publisher.name))
+      new Set(allBooks.map((book) => book.publisher))
     );
     const publisherSelect = document.getElementById(
       "by-publisher"
