@@ -217,7 +217,7 @@ npx tsc --noEmit
 ## 💻 Technology Stack
 
 - **TypeScript** - Type-safe JavaScript
-- **ES2015 Modules** - Modern module system
+- **ES2022 Modules** - Modern module system
 - **Fetch API** - HTTP requests
 - **localStorage** - Client-side data persistence
 - **Milligram CSS** - Minimal CSS framework
