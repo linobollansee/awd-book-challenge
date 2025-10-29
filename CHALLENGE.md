@@ -6,6 +6,10 @@ The customer is a library focused on IT books in the fictitious city of Foobar t
 
 ## Given
 
+### Repository
+
+Clone/Fork this Git Repository as a starter https://github.com/neuefische/awd-book-challenge/tree/main.
+
 ### Rest-API
 
 The REST-API is available at https://www.npmjs.com/package/bookmonkey-api. Follow the instructions to start the api server on your local machine. Or use `npx bookmonkey-api`
