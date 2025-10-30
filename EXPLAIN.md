@@ -96,7 +96,7 @@ Die `package.json` Datei ist das **Herzstück** jedes Node.js- und TypeScript-Pr
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "bookmonkey-api": "^3.2.0"
@@ -345,7 +345,7 @@ Es gibt zwei Arten:
 ```json
 "devDependencies": {
   "concurrently": "^9.2.1",
-  "typescript": "^5.0.0"
+  "typescript": "^5.9.3"
 }
 ```
 
@@ -393,10 +393,10 @@ npm start        # Startet API UND Webserver gleichzeitig
 **typescript** - Der TypeScript-Compiler
 
 ```json
-"typescript": "^5.0.0"
+"typescript": "^5.9.3"
 ```
 
-- **Version**: `^5.0.0` (siehe Versionierung unten)
+- **Version**: `^5.9.3` (siehe Versionierung unten)
 - **Zweck**: Kompiliert TypeScript (`.ts`) zu JavaScript (`.js`)
 - **Befehl**: `tsc` (TypeScript Compiler)
 - **Konfiguration**: Liest Einstellungen aus `tsconfig.json`
@@ -422,37 +422,37 @@ add(5, "10"); // ❌ FEHLER: Argument of type 'string' is not assignable to para
 **Versions-Syntax mit `^` (Caret)**
 
 ```json
-"typescript": "^5.0.0"
+"typescript": "^5.9.3"
 ```
 
 Das `^` Symbol definiert, welche Versionen erlaubt sind:
 
-**`^5.0.0` bedeutet:**
+**`^5.9.3` bedeutet:**
 
-- ✅ `5.0.0` - Exakt diese Version
-- ✅ `5.0.1` - Patch-Updates erlaubt
-- ✅ `5.1.0` - Minor-Updates erlaubt
-- ✅ `5.9.9` - Alle Minor- und Patch-Updates erlaubt
+- ✅ `5.9.3` - Exakt diese Version
+- ✅ `5.9.4` - Patch-Updates erlaubt
+- ✅ `5.10.0` - Minor-Updates erlaubt
+- ✅ `5.99.99` - Alle Minor- und Patch-Updates erlaubt
 - ❌ `6.0.0` - Major-Updates nicht erlaubt (Breaking Changes)
 
 **Andere Versions-Symbole:**
 
 ```json
-"^5.0.0"   // Kompatible Updates (5.x.x)
-"~5.0.0"   // Nur Patch-Updates (5.0.x)
-"5.0.0"    // Exakt diese Version
+"^5.9.3"   // Kompatible Updates (5.x.x)
+"~5.9.3"   // Nur Patch-Updates (5.9.x)
+"5.9.3"    // Exakt diese Version
 "*"        // Jede Version (gefährlich!)
-">=5.0.0"  // Mindestens 5.0.0
+">=5.9.3"  // Mindestens 5.9.3
 ```
 
 **Warum `^` verwenden?**
 
 ```json
 // ❌ Zu strikt - keine Bugfixes
-"typescript": "5.0.0"
+"typescript": "5.9.3"
 
 // ✅ Optimal - Bugfixes und Features, aber keine Breaking Changes
-"typescript": "^5.0.0"
+"typescript": "^5.9.3"
 
 // ⚠️ Zu locker - könnte Breaking Changes einführen
 "typescript": "*"
@@ -618,11 +618,11 @@ Wenn du `npm install` ausführst, wird automatisch eine `package-lock.json` Date
 
 ```json
 // package.json sagt:
-"typescript": "^5.0.0"  // Erlaubt 5.0.0 bis 5.9.9
+"typescript": "^5.9.3"  // Erlaubt 5.9.3 bis 5.99.99
 
 // package-lock.json sagt:
 "typescript": {
-  "version": "5.3.2"     // Exakt diese Version wurde installiert
+  "version": "5.9.3"     // Exakt diese Version wurde installiert
 }
 ```
 
@@ -631,7 +631,7 @@ Wenn du `npm install` ausführst, wird automatisch eine `package-lock.json` Date
 ```bash
 # Entwickler A installiert im Januar 2024:
 npm install
-# Bekommt typescript@5.0.0
+# Bekommt typescript@5.9.3
 
 # Entwickler B installiert im Oktober 2024:
 npm install
@@ -12379,7 +12379,7 @@ npm install --save-dev typescript
 
 # Version prüfen:
 npx tsc --version
-# Output: Version 5.0.0
+# Output: Version 5.9.3
 ```
 
 **Verwendung:**
