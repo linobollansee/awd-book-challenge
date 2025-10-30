@@ -629,30 +629,33 @@ Wenn du `npm install` ausführst, wird automatisch eine `package-lock.json` Date
 **Warum ist das wichtig?**
 
 ```bash
-# OHNE package-lock.json:
+# Szenario: package-lock.json wird NICHT ins Git eingecheckt
 
 # Entwickler A installiert im März 2024:
 npm install
 # Bekommt typescript@5.4.2 (neueste Version zu diesem Zeitpunkt)
+# package-lock.json wird erstellt, aber NICHT committet
 
-# Entwickler B installiert im Oktober 2024:
+# Entwickler B klont Repository im Oktober 2024:
 npm install
 # Bekommt typescript@5.9.3 (neueste Version zu diesem Zeitpunkt)
+# Erstellt eigene package-lock.json mit 5.9.3
 
 # Problem: Unterschiedliche Versionen → Unterschiedliches Verhalten!
 ```
 
-**Mit package-lock.json:**
+**Mit package-lock.json im Git:**
 
 ```bash
-# Entwickler A installiert im März 2024 und commitet package-lock.json:
+# Entwickler A installiert im März 2024:
 npm install
 # Bekommt typescript@5.4.2
 # → package-lock.json wird mit Version 5.4.2 erstellt
+git add package-lock.json && git commit && git push
 
-# Entwickler B installiert im Oktober 2024:
+# Entwickler B klont Repository im Oktober 2024:
 npm install
-# Bekommt typescript@5.4.2 (aus package-lock.json, nicht die neueste!)
+# Bekommt typescript@5.4.2 (aus der commiteten package-lock.json!)
 # → Konsistente Entwicklungsumgebung!
 ```
 
