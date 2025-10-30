@@ -150,7 +150,7 @@ The BookMonkey API runs on: `http://localhost:4730`
 Available endpoints:
 
 - `GET http://localhost:4730/books` - Fetch all books
-- `GET http://localhost:4730/book/:isbn` - Fetch single book by ISBN
+- `GET http://localhost:4730/books/:isbn` - Fetch single book by ISBN
 
 ## 📦 Package Management
 
