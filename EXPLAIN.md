@@ -629,13 +629,15 @@ Wenn du `npm install` ausführst, wird automatisch eine `package-lock.json` Date
 **Warum ist das wichtig?**
 
 ```bash
-# Entwickler A installiert im Januar 2024:
+# OHNE package-lock.json:
+
+# Entwickler A installiert im März 2024:
 npm install
-# Bekommt typescript@5.9.3
+# Bekommt typescript@5.4.2 (neueste Version zu diesem Zeitpunkt)
 
 # Entwickler B installiert im Oktober 2024:
 npm install
-# Bekommt typescript@5.3.0 (neuere Version)
+# Bekommt typescript@5.9.3 (neueste Version zu diesem Zeitpunkt)
 
 # Problem: Unterschiedliche Versionen → Unterschiedliches Verhalten!
 ```
@@ -643,9 +645,14 @@ npm install
 **Mit package-lock.json:**
 
 ```bash
-# Beide Entwickler installieren:
+# Entwickler A installiert im März 2024 und commitet package-lock.json:
 npm install
-# Beide bekommen exakt typescript@5.3.2
+# Bekommt typescript@5.4.2
+# → package-lock.json wird mit Version 5.4.2 erstellt
+
+# Entwickler B installiert im Oktober 2024:
+npm install
+# Bekommt typescript@5.4.2 (aus package-lock.json, nicht die neueste!)
 # → Konsistente Entwicklungsumgebung!
 ```
 
