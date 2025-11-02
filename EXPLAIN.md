@@ -275,13 +275,26 @@ Mit einem Webserver:
 **Warum die Anführungszeichen mit Backslash `\"`?**
 
 ```json
-// Äußere Anführungszeichen: JSON-String
 "start": "concurrently \"npm run api\" \"npm run serve\""
-//                      ^              ^  ^             ^
-//                      Escaped (Teil des Befehlsstrings)
 ```
 
-In JSON müssen Anführungszeichen innerhalb eines Strings "escaped" werden mit `\"`.
+**Erklärung:**
+
+```json
+"start": "concurrently \"npm run api\" \"npm run serve\""
+```
+
+- Die **äußeren `"`** (direkt nach `:` und ganz am Ende) = JSON-String-Grenzen
+- Die **`\"`** = Escaped Quotes (Backslash + Anführungszeichen im String-Inhalt)
+- Jedes `\"` wird zu einem `"` im tatsächlichen String-Wert
+
+**Der String-Wert ist:**
+
+```
+concurrently "npm run api" "npm run serve"
+```
+
+In JSON müssen Anführungszeichen innerhalb eines Strings mit `\"` escaped werden.
 
 **Was passiert beim Ausführen?**
 
